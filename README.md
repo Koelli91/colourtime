@@ -2,6 +2,6 @@
 Farbwechselnder Hintergrund anhand der Uhrzeit
 
 ##Technologien
-*HTML
-*CSS
-*JavaScript/jQuery
+* HTML
+* CSS
+* JavaScript/jQuery
