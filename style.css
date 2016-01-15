@@ -1,0 +1,34 @@
+body {
+	font-family: "open sans";
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	transition: background-color 1000ms linear;
+}
+
+#container {
+	width: 650px;
+	height: calc(170px + 45px + 50px);
+	padding-top: calc(50vh - 132px);
+	margin: 0 auto;
+}
+
+#time {
+	width: 650px;
+	height: 170px;
+	font-size: 120px;
+	font-weight: 300;
+}
+
+#colour {
+	width: 250px;
+	height: 45px;
+	font-size: 30px;
+	font-weight: 300;
+	padding-top: 50px;
+}
+
+#time, #colour {
+	margin: 0 auto;
+	text-align: center;
+}

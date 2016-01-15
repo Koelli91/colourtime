@@ -1,0 +1,72 @@
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>What colour is it?</title>
+<link rel="stylesheet" href="normalize.css" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:800,400,300">
+<link rel="stylesheet" href="style.css" />
+<script src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<div id="container">
+	<div id="time"></div>
+	<div id="colour"></div>
+</div>
+
+<script>
+$(function() {
+	setTimeAndColour(new Date());
+	window.setInterval(function() {
+		setTimeAndColour(new Date());
+	}, 1000);
+	
+	function setTimeAndColour(date) {
+		var hour		= date.getHours();
+		var minute	= date.getMinutes();
+		var second	= date.getSeconds();
+		/*hour = 18;
+		minute = 00;
+		second = 20;*/
+		setTime(hour, minute, second);
+		setColor(hour, minute, second);
+	}
+	
+	function setTime(hour, minute, second) {
+		if (hour < 10)
+			hour = "0" + hour;
+		if (minute < 10)
+			minute = "0" + minute;
+		if (second < 10)
+			second = "0" + second;
+		$('#time').html(hour + " : " + minute + " : " + second);
+	}
+	
+	function setColor(r, g, b) {
+		var hourToRed = 10.625;
+		var minuteToGreen = 4.25;
+		var secondToBlue = 4.25;
+		r = Math.round(r * hourToRed);
+		g = Math.round(g * minuteToGreen);
+		b = Math.round(b * secondToBlue);
+		/*if (r.length < 2) r = "0" + r;
+		if (g.length < 2) g = "0" + g;
+		if (b.length < 2) b = "0" + b;*/
+		var color = "rgb(" + r + "," + g + "," + b + ")";
+		var colorHex = "" + (r<10 ? "0" : "") + decToHex(r) + (g<10 ? "0" : "") + decToHex(g) + (b<10 ? "0" : "") + decToHex(b);
+		var textColor = (hexToDec(colorHex) < 11184810) ? 'rgb(255,255,255)' : 'rgb(0,0,0)';
+		$('#colour').html("#" + colorHex);
+		$('body').css('background-color', color);
+		$('body').css('color', textColor);
+	}
+	
+	function decToHex(val) {
+		return val.toString(16);
+	}
+	
+	function hexToDec(val) {
+		return parseInt(val, 16);
+	}
+});
+</script>
+</body>
+</html>
